@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Portfolio</title>
+  <link rel="stylesheet" href="styles/styles.css"> <!-- Link to CSS -->
+</head>
+<body>
+
+  <div id="app">
+    <!-- Navbar -->
+  <nav>
+    <h1>Jonathan Collins</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <h2>Welcome to My Portfolio</h2>
+    <p>UI/UX Designer & Artist</p>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2>My Work</h2>
+    <div id="portfolio-gallery">
+      <button @click="showCategory('UI/UX')">UI/UX</button>
+      <button @click="showCategory('Art')">Art</button>
+
+      <div class="portfolio-item" v-for="item in filteredProjects" :key="item.id">
+        <img :src="item.image" :alt="item.title">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Short bio about your background, experience, and design philosophy.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form @submit.prevent="sendMessage">
+      <label for="name">Name:</label>
+      <input type="text" id="name" v-model="formData.name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" v-model="formData.email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" v-model="formData.message" required></textarea>
+      
+      <button type="submit">Send</button>
+    </form>
+  </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> <!-- Vue.js CDN -->
+  <script src="scripts/app.js"></script> <!-- Link to JavaScript -->
+</body>
+</html>
